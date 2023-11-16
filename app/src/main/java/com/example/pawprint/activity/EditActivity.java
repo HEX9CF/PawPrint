@@ -69,8 +69,9 @@ public class EditActivity extends AppCompatActivity {
         this.btnCancel.setOnClickListener(new EditOnClickListener());
 
         // 创建 Retrofit 实例
-        this.retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+        String baseUrl = getString(R.string.base_url);
+        retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
