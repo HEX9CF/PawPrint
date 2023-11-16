@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--网络权限-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,13 +16,13 @@
         android:theme="@style/Theme.PawPrint"
         tools:targetApi="31">
         <activity
-            android:name=".EditActivity"
+            android:name=".activity.EditActivity"
             android:exported="false" />
         <activity
-            android:name=".ArchiveActivity"
+            android:name=".activity.ArchiveActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
