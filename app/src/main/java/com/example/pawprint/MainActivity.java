@@ -1,9 +1,11 @@
 package com.example.pawprint;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.pawprint.adapter.AnimalRecyclerAdapter;
@@ -21,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        startActivity(new Intent(MainActivity.this, EditActivity.class));
 
         recyclerView = findViewById(R.id.recyclerView);
 
@@ -33,12 +34,17 @@ public class MainActivity extends AppCompatActivity {
             animalList.add(animal);
         }
 
+        // 设置适配器
         animalRecyclerAdapter = new AnimalRecyclerAdapter();
         animalRecyclerAdapter.setAnimalList(animalList);
         recyclerView.setAdapter(animalRecyclerAdapter);
 
+        // 设置布局管理器
         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(layoutManager);
+
+        DividerItemDecoration divider = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(divider);
     }
 
 

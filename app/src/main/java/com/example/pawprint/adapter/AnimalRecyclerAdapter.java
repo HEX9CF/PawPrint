@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pawprint.MainActivity;
 import com.example.pawprint.R;
+import com.example.pawprint.listener.ItemAnimalOnClickListener;
 import com.example.pawprint.pojo.Animal;
 import com.example.pawprint.viewHolder.ItemAnimalViewHolder;
 
@@ -28,8 +29,14 @@ public class AnimalRecyclerAdapter extends RecyclerView.Adapter<ItemAnimalViewHo
     @Override
     public void onBindViewHolder(@NonNull ItemAnimalViewHolder holder, int position) {
         Animal animal = animalList.get(position);
+
         holder.getNameTv().setText(animal.getName());
         holder.getDescriptionTv().setText(animal.getDescription());
+
+        // 设置监听器
+        ItemAnimalOnClickListener onClickListener = new ItemAnimalOnClickListener();
+        onClickListener.setPosition(position);
+        holder.getRootView().setOnClickListener(onClickListener);
     }
 
     @Override
