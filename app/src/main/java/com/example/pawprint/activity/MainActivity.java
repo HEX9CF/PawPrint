@@ -1,4 +1,4 @@
-package com.example.pawprint;
+package com.example.pawprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -8,21 +8,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.pawprint.R;
 import com.example.pawprint.adapter.AnimalRecyclerAdapter;
-import com.example.pawprint.pojo.Animal;
+import com.example.pawprint.model.Animal;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
-    AnimalRecyclerAdapter animalRecyclerAdapter;
-    List<Animal> animalList = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private AnimalRecyclerAdapter animalRecyclerAdapter;
+    private List<Animal> animalList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        startActivity(new Intent(MainActivity.this, EditActivity.class));
 
         recyclerView = findViewById(R.id.recyclerView);
 

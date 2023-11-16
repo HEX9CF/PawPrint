@@ -1,8 +1,10 @@
-package com.example.pawprint;
+package com.example.pawprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.pawprint.R;
 
 public class ArchiveActivity extends AppCompatActivity {
 

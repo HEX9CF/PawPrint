@@ -3,8 +3,9 @@ package com.example.pawprint.model;
 import java.time.LocalDateTime;
 
 public class Animal {
+    private Integer id;     // ID
     private String name;        // 名字
-    private String category;    // 物种
+    private String species;    // 物种
     private Integer age;        // 年龄
     private Integer gender;     // 性别
     private String appearance;  // 外观
@@ -15,6 +16,14 @@ public class Animal {
     private LocalDateTime createTime;   // 创建时间
     private LocalDateTime updateTime;   // 更新时间
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -23,12 +32,12 @@ public class Animal {
         this.name = name;
     }
 
-    public String getCategory() {
-        return category;
+    public String getSpecies() {
+        return species;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setSpecies(String species) {
+        this.species = species;
     }
 
     public Integer getAge() {

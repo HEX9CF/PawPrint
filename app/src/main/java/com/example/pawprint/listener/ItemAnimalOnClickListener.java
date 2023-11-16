@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.pawprint.EditActivity;
+import com.example.pawprint.activity.EditActivity;
 
 public class ItemAnimalOnClickListener implements View.OnClickListener{
     private int position;

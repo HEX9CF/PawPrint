@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Paw Print</string>
+    <string name="diet">饮食习惯</string>
+    <string name="appearance">外观</string>
+    <string name="location">出现地点</string>
+    <string name="other">其他</string>
+    <string name="female">雌性♀</string>
+    <string name="male">雄性♂</string>
+    <string name="unknown">未知</string>
+    <string name="age">年龄</string>
+    <string name="species">物种</string>
+    <string name="name">名字</string>
+    <string name="health">健康状况</string>
+    <string name="description">简介</string>
+    <string name="cancel_editing">取消编辑</string>
+    <string name="submit_archive">提交档案</string>
 </resources>

@@ -1,16 +1,14 @@
 package com.example.pawprint.adapter;
 
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pawprint.MainActivity;
 import com.example.pawprint.R;
 import com.example.pawprint.listener.ItemAnimalOnClickListener;
-import com.example.pawprint.pojo.Animal;
+import com.example.pawprint.model.Animal;
 import com.example.pawprint.viewHolder.ItemAnimalViewHolder;
 
 import java.util.List;
