@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.pawprint.R;
 import com.example.pawprint.listener.EditOnClickListener;
@@ -26,9 +27,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @date 2023/11/16
  */
 public class EditActivity extends AppCompatActivity {
-    private Animal animal;
     private Retrofit retrofit;
     // 控件成员变量
+    private EditText etId;
     private EditText etName;
     private EditText etSpecies;
     private EditText etAge;
@@ -52,6 +53,7 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
 
         // 初始化控件
+        etId = findViewById(R.id.et_id);
         etName = findViewById(R.id.et_name);
         etSpecies = findViewById(R.id.et_species);
         etAge = findViewById(R.id.et_age);
@@ -64,10 +66,6 @@ public class EditActivity extends AppCompatActivity {
         btnCancel = findViewById(R.id.btn_cancel);
         btnSubmit = findViewById(R.id.btn_submit);
 
-        // 绑定监听器
-        this.btnSubmit.setOnClickListener(new EditOnClickListener());
-        this.btnCancel.setOnClickListener(new EditOnClickListener());
-
         // 创建 Retrofit 实例
         String baseUrl = getString(R.string.base_url);
         retrofit = new Retrofit.Builder()
@@ -75,12 +73,14 @@ public class EditActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        // 绑定监听器
+        this.btnSubmit.setOnClickListener(new EditOnClickListener(this));
+        this.btnCancel.setOnClickListener(new EditOnClickListener(this));
 
+        // 创建 AnimalApi 实例
         AnimalApi animalApi = retrofit.create(AnimalApi.class);
+
+        // 创建请求
         Call<Result<Animal>> call = animalApi.getById(2);
 
         // 异步请求
@@ -91,11 +91,15 @@ public class EditActivity extends AppCompatActivity {
                 if(body == null) {
                     return;
                 }
-                animal = response.body().getData();
+                Animal animal = response.body().getData();
                 if(animal == null) {
                     return;
                 }
                 // 设置控件值
+                if(animal.getId() != null) {
+                    int id = animal.getId();
+                    etId.setText(String.valueOf(id));
+                }
                 if(animal.getName() != null) {
                     etName.setText(animal.getName());
                 }
@@ -145,8 +149,60 @@ public class EditActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Result<Animal>> call, Throwable t) {
-                System.out.println(t);
+                Toast.makeText(EditActivity.this, "请求失败", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public Retrofit getRetrofit() {
+        return retrofit;
+    }
+
+    public EditText getEtId() {
+        return etId;
+    }
+
+    public EditText getEtName() {
+        return etName;
+    }
+
+    public EditText getEtSpecies() {
+        return etSpecies;
+    }
+
+    public EditText getEtAge() {
+        return etAge;
+    }
+
+    public RadioGroup getRgGender() {
+        return rgGender;
+    }
+
+    public EditText getEtLocation() {
+        return etLocation;
+    }
+
+    public EditText getEtHealth() {
+        return etHealth;
+    }
+
+    public EditText getEtAppearance() {
+        return etAppearance;
+    }
+
+    public EditText getEtDiet() {
+        return etDiet;
+    }
+
+    public EditText getEtDescription() {
+        return etDescription;
+    }
+
+    public Button getBtnCancel() {
+        return btnCancel;
+    }
+
+    public Button getBtnSubmit() {
+        return btnSubmit;
     }
 }
