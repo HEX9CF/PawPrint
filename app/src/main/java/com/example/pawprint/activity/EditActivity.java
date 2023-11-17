@@ -75,6 +75,11 @@ public class EditActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+        retrofit = new Retrofit.Builder()
+                .baseUrl("http://10.0.2.2:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
         AnimalApi animalApi = retrofit.create(AnimalApi.class);
         Call<Result<Animal>> call = animalApi.getById(2);
 
