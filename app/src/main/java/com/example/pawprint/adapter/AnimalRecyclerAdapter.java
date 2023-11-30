@@ -13,6 +13,12 @@ import com.example.pawprint.viewHolder.ItemAnimalViewHolder;
 
 import java.util.List;
 
+/**
+ * 动物回收器适配器
+ *
+ * @author HEX9CF
+ * @date 2023/11/17
+ */
 public class AnimalRecyclerAdapter extends RecyclerView.Adapter<ItemAnimalViewHolder> {
     List<Animal> animalList;
 
@@ -33,7 +39,7 @@ public class AnimalRecyclerAdapter extends RecyclerView.Adapter<ItemAnimalViewHo
 
         // 设置监听器
         ItemAnimalOnClickListener onClickListener = new ItemAnimalOnClickListener();
-        onClickListener.setPosition(position);
+        onClickListener.setAnimal(animal);
         holder.getRootView().setOnClickListener(onClickListener);
     }
 

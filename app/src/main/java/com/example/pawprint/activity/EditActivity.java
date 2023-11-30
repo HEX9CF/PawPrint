@@ -2,6 +2,7 @@ package com.example.pawprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @date 2023/11/16
  */
 public class EditActivity extends AppCompatActivity {
+    Animal animal;
     private Retrofit retrofit;
     // 控件成员变量
     private EditText etId;
@@ -81,7 +83,14 @@ public class EditActivity extends AppCompatActivity {
         AnimalApi animalApi = retrofit.create(AnimalApi.class);
 
         // 创建请求
-        Call<Result<Animal>> call = animalApi.getById(2);
+        Intent intent = this.getIntent();
+        String idStr = intent.getStringExtra("id");
+        if(idStr == null) {
+            return;
+        }
+        Integer id = Integer.parseInt(idStr);
+        Toast.makeText(EditActivity.this, id.toString(), Toast.LENGTH_SHORT).show();
+        Call<Result<Animal>> call = animalApi.getById(id);
 
         // 异步请求
         call.enqueue(new Callback<Result<Animal>>() {
@@ -91,7 +100,7 @@ public class EditActivity extends AppCompatActivity {
                 if(body == null) {
                     return;
                 }
-                Animal animal = response.body().getData();
+                animal = response.body().getData();
                 if(animal == null) {
                     return;
                 }

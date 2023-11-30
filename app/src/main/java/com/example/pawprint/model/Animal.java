@@ -2,6 +2,12 @@ package com.example.pawprint.model;
 
 import java.time.LocalDateTime;
 
+/**
+ * 动物实体类
+ *
+ * @author HEX9CF
+ * @date 2023/11/17
+ */
 public class Animal {
     private Integer id;     // ID
     private String name;        // 名字

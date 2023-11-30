@@ -6,6 +6,12 @@ import android.os.Bundle;
 
 import com.example.pawprint.R;
 
+/**
+ * 档案活动
+ *
+ * @author HEX9CF
+ * @date 2023/11/17
+ */
 public class ArchiveActivity extends AppCompatActivity {
 
     @Override
