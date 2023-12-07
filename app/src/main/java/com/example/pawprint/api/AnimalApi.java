@@ -16,7 +16,6 @@ import retrofit2.http.Path;
 /**
  * 动物api
  *
- * @author HEX9CF
  * @date 2023/11/17
  */
 public interface AnimalApi {

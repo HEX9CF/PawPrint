@@ -15,4 +15,6 @@
     <string name="cancel_editing">取消编辑</string>
     <string name="submit_archive">提交档案</string>
     <string name="archive_id">档案ID</string>
+    <string name="edit_archive">编辑档案</string>
+    <string name="gender">性别</string>
 </resources>

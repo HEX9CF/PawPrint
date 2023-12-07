@@ -1,5 +1,6 @@
 package com.example.pawprint.adapter;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -16,7 +17,6 @@ import java.util.List;
 /**
  * 动物回收器适配器
  *
- * @author HEX9CF
  * @date 2023/11/17
  */
 public class AnimalRecyclerAdapter extends RecyclerView.Adapter<ItemAnimalViewHolder> {
@@ -25,9 +25,9 @@ public class AnimalRecyclerAdapter extends RecyclerView.Adapter<ItemAnimalViewHo
     @NonNull
     @Override
     public ItemAnimalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.item_animal, null);
-        ItemAnimalViewHolder itemAnimalViewHolder = new ItemAnimalViewHolder(view);
-        return itemAnimalViewHolder;
+//        View view = View.inflate(parent.getContext(), R.layout.item_animal, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_animal, null, false);
+        return new ItemAnimalViewHolder(view);
     }
 
     @Override
@@ -46,10 +46,6 @@ public class AnimalRecyclerAdapter extends RecyclerView.Adapter<ItemAnimalViewHo
     @Override
     public int getItemCount() {
         return animalList.size();
-    }
-
-    public List<Animal> getAnimalList() {
-        return animalList;
     }
 
     public void setAnimalList(List<Animal> animalList) {

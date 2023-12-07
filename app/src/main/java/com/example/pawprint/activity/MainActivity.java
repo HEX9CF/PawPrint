@@ -28,7 +28,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * 主要活动
  *
- * @author HEX9CF
  * @date 2023/11/17
  */
 public class MainActivity extends AppCompatActivity {
@@ -42,19 +41,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        startActivity(new Intent(MainActivity.this, EditActivity.class));
+        Intent intent = new Intent(MainActivity.this, EditActivity.class);
+        intent.putExtra("edit_type", false);
+        startActivity(intent);
 
         recyclerView = findViewById(R.id.recyclerView);
-
-        // 构造数据
-/*
-        for(int i = 0; i < 50; i++) {
-            Animal animal = new Animal();
-            animal.setName("名字" + i);
-            animal.setDescription("简介" + i);
-            animalList.add(animal);
-        }
-*/
 
         // 创建 Retrofit 实例
         String baseUrl = getString(R.string.base_url);

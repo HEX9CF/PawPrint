@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 /**
  * 动物实体类
  *
- * @author HEX9CF
  * @date 2023/11/17
  */
 public class Animal {

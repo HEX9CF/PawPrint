@@ -12,7 +12,6 @@ import com.example.pawprint.R;
 /**
  * 动物条目视图持有者
  *
- * @author HEX9CF
  * @date 2023/11/17
  */
 public class ItemAnimalViewHolder extends RecyclerView.ViewHolder {

@@ -3,7 +3,6 @@ package com.example.pawprint.model;
 /**
  * 请求结果实体类
  *
- * @author HEX9CF
  * @date 2023/11/17
  */
 public class Result<T> {
