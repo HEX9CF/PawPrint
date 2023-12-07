@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.pawprint.R;
 import com.example.pawprint.adapter.AnimalRecyclerAdapter;
 import com.example.pawprint.api.AnimalApi;
 import com.example.pawprint.listener.EditOnClickListener;
+import com.example.pawprint.listener.MainOnClickListener;
 import com.example.pawprint.model.Animal;
 import com.example.pawprint.model.Result;
 
@@ -35,15 +37,18 @@ public class MainActivity extends AppCompatActivity {
     private AnimalRecyclerAdapter animalRecyclerAdapter;
     private List<Animal> animalList = new ArrayList<>();
     private Retrofit retrofit;
+    private Button btnAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(MainActivity.this, EditActivity.class);
-        intent.putExtra("edit_type", false);
-        startActivity(intent);
+        // 初始化控件
+        btnAdd = findViewById(R.id.btn_add);
+
+        // 设置监听器
+        btnAdd.setOnClickListener(new MainOnClickListener(this));
 
         recyclerView = findViewById(R.id.recyclerView);
 

@@ -1,10 +1,12 @@
 package com.example.pawprint.listener;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 import com.example.pawprint.R;
 import com.example.pawprint.activity.EditActivity;
+import com.example.pawprint.activity.MainActivity;
 import com.example.pawprint.api.AnimalApi;
 import com.example.pawprint.model.Animal;
 import com.example.pawprint.model.Result;
@@ -73,7 +75,8 @@ public class EditOnClickListener implements View.OnClickListener {
                         }
                         String msg = response.body().getMsg();
                         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
-                        activity.finish();
+                        Intent intent = new Intent(context, MainActivity.class);
+                        context.startActivity(intent);
                     }
 
                     @Override
@@ -123,7 +126,8 @@ public class EditOnClickListener implements View.OnClickListener {
                         }
                         String msg = response.body().getMsg();
                         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
-                        activity.finish();
+                        Intent intent = new Intent(context, MainActivity.class);
+                        context.startActivity(intent);
                     }
 
                     @Override
