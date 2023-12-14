@@ -17,4 +17,7 @@
     <string name="archive_id">档案ID</string>
     <string name="edit_archive">编辑档案</string>
     <string name="gender">性别</string>
+    <string name="add">添加</string>
+    <string name="paw_print">Paw Print</string>
+    <string name="avatar_url">头像图片链接</string>
 </resources>

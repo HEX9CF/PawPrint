@@ -18,6 +18,7 @@ public class Animal {
     private String health;      // 健康状况
     private String diet;        // 饮食状况
     private String description; // 介绍
+    private String avatar;    // 头像
     private LocalDateTime createTime;   // 创建时间
     private LocalDateTime updateTime;   // 更新时间
 
@@ -115,5 +116,13 @@ public class Animal {
 
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

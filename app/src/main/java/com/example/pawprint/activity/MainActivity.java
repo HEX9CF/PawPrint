@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -17,6 +16,7 @@ import com.example.pawprint.listener.EditOnClickListener;
 import com.example.pawprint.listener.MainOnClickListener;
 import com.example.pawprint.model.Animal;
 import com.example.pawprint.model.Result;
+import com.example.pawprint.utils.RetrofitBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,10 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 创建 Retrofit 实例
         String baseUrl = getString(R.string.base_url);
-        retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        retrofit = RetrofitBuilder.build(baseUrl);
 
         // 创建 AnimalApi 实例
         AnimalApi animalApi = retrofit.create(AnimalApi.class);

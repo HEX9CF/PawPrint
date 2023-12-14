@@ -3,23 +3,26 @@ package com.example.pawprint.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.pawprint.R;
 import com.example.pawprint.listener.EditOnClickListener;
 import com.example.pawprint.model.Animal;
 import com.example.pawprint.api.AnimalApi;
 import com.example.pawprint.model.Result;
+import com.example.pawprint.utils.RetrofitBuilder;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * 编辑活动
@@ -42,6 +45,7 @@ public class EditActivity extends AppCompatActivity {
     private EditText etAppearance;
     private EditText etDiet;
     private EditText etDescription;
+    private EditText etAvatar;
     private Button btnCancel;
     private Button btnSubmit;
 
@@ -66,6 +70,7 @@ public class EditActivity extends AppCompatActivity {
         etAppearance = findViewById(R.id.et_appearance);
         etDiet = findViewById(R.id.et_diet);
         etDescription = findViewById(R.id.et_description);
+        etAvatar = findViewById(R.id.et_avatar);
         btnCancel = findViewById(R.id.btn_cancel);
         btnSubmit = findViewById(R.id.btn_submit);
 
@@ -76,10 +81,7 @@ public class EditActivity extends AppCompatActivity {
 
         // 创建 Retrofit 实例
         String baseUrl = getString(R.string.base_url);
-        retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        retrofit = RetrofitBuilder.build(baseUrl);
 
         // 绑定监听器
         this.btnSubmit.setOnClickListener(new EditOnClickListener(this));
@@ -153,6 +155,9 @@ public class EditActivity extends AppCompatActivity {
                     }
                     if(animal.getDescription() != null) {
                         etDescription.setText(animal.getDescription());
+                    }
+                    if(animal.getAvatar() != null) {
+                        etAvatar.setText(animal.getAvatar());
                     }
                 }
 

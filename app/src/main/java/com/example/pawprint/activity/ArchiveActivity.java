@@ -3,22 +3,25 @@ package com.example.pawprint.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.pawprint.R;
 import com.example.pawprint.listener.ArchiveOnClickListener;
 import com.example.pawprint.model.Animal;
 import com.example.pawprint.api.AnimalApi;
 import com.example.pawprint.model.Result;
+import com.example.pawprint.utils.RetrofitBuilder;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * 编辑活动
@@ -29,6 +32,7 @@ public class ArchiveActivity extends AppCompatActivity {
     Animal animal;
     private Retrofit retrofit;
     // 控件成员变量
+    private ImageView ivAvatar;
     private TextView tvId;
     private TextView tvName;
     private TextView tvSpecies;
@@ -52,6 +56,7 @@ public class ArchiveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_archive);
 
         // 初始化控件
+        ivAvatar = findViewById(R.id.iv_avatar);
         tvId = findViewById(R.id.tv_id);
         tvName = findViewById(R.id.tv_name);
         tvSpecies = findViewById(R.id.tv_species);
@@ -70,10 +75,7 @@ public class ArchiveActivity extends AppCompatActivity {
 
         // 创建 Retrofit 实例
         String baseUrl = getString(R.string.base_url);
-        retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        retrofit = RetrofitBuilder.build(baseUrl);
 
         // 绑定监听器
         this.btnEdit.setOnClickListener(new ArchiveOnClickListener(this));
@@ -146,6 +148,14 @@ public class ArchiveActivity extends AppCompatActivity {
                 if(animal.getDescription() != null) {
                     tvDescription.setText(animal.getDescription());
                 }
+
+                // 设置头像
+                Uri uri = Uri.parse(animal.getAvatar());
+                Glide.with(ArchiveActivity.this)
+                        .load(uri)
+                        .placeholder(R.drawable.baseline_photo_240)
+                        .error(R.drawable.baseline_photo_240)
+                        .into(ivAvatar);
             }
 
             @Override

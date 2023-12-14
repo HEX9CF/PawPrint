@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.pawprint.R;
 import com.example.pawprint.listener.ItemAnimalOnClickListener;
 import com.example.pawprint.model.Animal;
@@ -37,10 +38,17 @@ public class AnimalRecyclerAdapter extends RecyclerView.Adapter<ItemAnimalViewHo
 
         // 设置文本
         holder.getNameTv().setText(animal.getName());
+//        holder.getDescriptionTv().setText(animal.getDescription());
         holder.getDescriptionTv().setText(animal.getDescription());
 
         // 设置头像
-        holder.getAvatarIv().setImageResource(R.drawable.cat);
+        Uri uri = Uri.parse(animal.getAvatar());
+        Glide.with(holder.getAvatarIv().getContext())
+                .load(uri)
+                .placeholder(R.drawable.baseline_photo_240)
+                .error(R.drawable.baseline_photo_240)
+                .into(holder.getAvatarIv());
+//        holder.getAvatarIv().setImageResource(R.drawable.cat);
 
         // 设置监听器
         ItemAnimalOnClickListener onClickListener = new ItemAnimalOnClickListener();
