@@ -37,17 +37,28 @@ public class AnimalRecyclerAdapter extends RecyclerView.Adapter<ItemAnimalViewHo
         Animal animal = animalList.get(position);
 
         // 设置文本
-        holder.getNameTv().setText(animal.getName());
-//        holder.getDescriptionTv().setText(animal.getDescription());
-        holder.getDescriptionTv().setText(animal.getDescription());
+        if(animal.getName() == null || animal.getName().isEmpty()) {
+            holder.getNameTv().setText("");
+        } else {
+            holder.getNameTv().setText(animal.getName());
+        }
+        if(animal.getDescription() == null || animal.getDescription().isEmpty()) {
+            holder.getDescriptionTv().setText("");
+        } else {
+            holder.getDescriptionTv().setText(animal.getDescription());
+        }
 
         // 设置头像
-        Uri uri = Uri.parse(animal.getAvatar());
-        Glide.with(holder.getAvatarIv().getContext())
-                .load(uri)
-                .placeholder(R.drawable.baseline_photo_240)
-                .error(R.drawable.baseline_photo_240)
-                .into(holder.getAvatarIv());
+        if(animal.getAvatar() == null || animal.getAvatar().isEmpty()) {
+            holder.getAvatarIv().setImageResource(R.drawable.baseline_photo_240);
+        } else {
+            Uri uri = Uri.parse(animal.getAvatar());
+            Glide.with(holder.getAvatarIv().getContext())
+                    .load(uri)
+                    .placeholder(R.drawable.baseline_photo_240)
+                    .error(R.drawable.baseline_photo_240)
+                    .into(holder.getAvatarIv());
+        }
 //        holder.getAvatarIv().setImageResource(R.drawable.cat);
 
         // 设置监听器

@@ -31,7 +31,7 @@ public class EditOnClickListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         Context context = view.getContext();
-        if(view.getId() == R.id.btn_submit) {
+        if(view.getId() == R.id.edit_btn_submit) {
             if(activity.getEditType()) {
                 Animal animal = new Animal();
 
@@ -137,7 +137,7 @@ public class EditOnClickListener implements View.OnClickListener {
                 });
             }
         }
-        if(view.getId() == R.id.btn_cancel) {
+        if(view.getId() == R.id.edit_btn_cancel) {
             // Toast.makeText(context, "取消", Toast.LENGTH_SHORT).show();
             activity.finish();
         }

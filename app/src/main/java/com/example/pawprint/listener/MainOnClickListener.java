@@ -17,7 +17,7 @@ public class MainOnClickListener implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         Context context = view.getContext();
-        if(view.getId() == R.id.btn_add) {
+        if(view.getId() == R.id.main_btn_add) {
             Intent intent = new Intent(context, EditActivity.class);
             intent.putExtra("edit_type", false);
             context.startActivity(intent);

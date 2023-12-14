@@ -71,8 +71,8 @@ public class EditActivity extends AppCompatActivity {
         etDiet = findViewById(R.id.et_diet);
         etDescription = findViewById(R.id.et_description);
         etAvatar = findViewById(R.id.et_avatar);
-        btnCancel = findViewById(R.id.btn_cancel);
-        btnSubmit = findViewById(R.id.btn_submit);
+        btnCancel = findViewById(R.id.edit_btn_cancel);
+        btnSubmit = findViewById(R.id.edit_btn_submit);
 
         // 获取传递的参数
         Intent intent = this.getIntent();

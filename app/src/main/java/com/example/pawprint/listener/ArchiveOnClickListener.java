@@ -16,11 +16,14 @@ public class ArchiveOnClickListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         Context context = view.getContext();
-        if(view.getId() == R.id.btn_edit) {
+        if(view.getId() == R.id.archive_btn_edit) {
             Intent intent = new Intent(context, EditActivity.class);
             intent.putExtra("id", activity.getAnimal().getId());
             intent.putExtra("edit_type", true);
             view.getContext().startActivity(intent);
+        }
+        if(view.getId() == R.id.archive_btn_return) {
+            activity.finish();
         }
     }
 }

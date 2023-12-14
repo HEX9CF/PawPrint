@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // 初始化控件
-        btnAdd = findViewById(R.id.btn_add);
+        btnAdd = findViewById(R.id.main_btn_add);
 
         // 设置监听器
         btnAdd.setOnClickListener(new MainOnClickListener(this));

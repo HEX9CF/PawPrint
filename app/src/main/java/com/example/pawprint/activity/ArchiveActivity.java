@@ -44,6 +44,7 @@ public class ArchiveActivity extends AppCompatActivity {
     private TextView tvDiet;
     private TextView tvDescription;
     private Button btnEdit;
+    private Button btnReturn;
 
     /**
      * 创建时
@@ -67,7 +68,8 @@ public class ArchiveActivity extends AppCompatActivity {
         tvAppearance = findViewById(R.id.tv_appearance);
         tvDiet = findViewById(R.id.tv_diet);
         tvDescription = findViewById(R.id.tv_description);
-        btnEdit = findViewById(R.id.btn_edit);
+        btnEdit = findViewById(R.id.archive_btn_edit);
+        btnReturn = findViewById(R.id.archive_btn_return);
 
         // 获取传递的参数
         Intent intent = this.getIntent();
@@ -79,6 +81,7 @@ public class ArchiveActivity extends AppCompatActivity {
 
         // 绑定监听器
         this.btnEdit.setOnClickListener(new ArchiveOnClickListener(this));
+        this.btnReturn.setOnClickListener(new ArchiveOnClickListener(this));
 
         // 创建 AnimalApi 实例
         AnimalApi animalApi = retrofit.create(AnimalApi.class);
@@ -150,12 +153,16 @@ public class ArchiveActivity extends AppCompatActivity {
                 }
 
                 // 设置头像
-                Uri uri = Uri.parse(animal.getAvatar());
-                Glide.with(ArchiveActivity.this)
-                        .load(uri)
-                        .placeholder(R.drawable.baseline_photo_240)
-                        .error(R.drawable.baseline_photo_240)
-                        .into(ivAvatar);
+                if(animal.getAvatar() == null || animal.getAvatar().isEmpty()) {
+                    ivAvatar.setImageResource(R.drawable.baseline_photo_240);
+                } else {
+                    Uri uri = Uri.parse(animal.getAvatar());
+                    Glide.with(ArchiveActivity.this)
+                            .load(uri)
+                            .placeholder(R.drawable.baseline_photo_240)
+                            .error(R.drawable.baseline_photo_240)
+                            .into(ivAvatar);
+                }
             }
 
             @Override
