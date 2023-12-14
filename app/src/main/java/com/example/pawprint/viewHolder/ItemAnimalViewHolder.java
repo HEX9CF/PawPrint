@@ -1,6 +1,7 @@
 package com.example.pawprint.viewHolder;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,12 +18,14 @@ import com.example.pawprint.R;
 public class ItemAnimalViewHolder extends RecyclerView.ViewHolder {
     TextView nameTv;
     TextView descriptionTv;
+    ImageView avatarIv;
     ConstraintLayout rootView;
 
     public ItemAnimalViewHolder(@NonNull View itemView) {
         super(itemView);
-        nameTv = itemView.findViewById(R.id.textView);
-        descriptionTv = itemView.findViewById(R.id.textView2);
+        nameTv = itemView.findViewById(R.id.item_tv_title);
+        descriptionTv = itemView.findViewById(R.id.item_tv_desc);
+        avatarIv = itemView.findViewById(R.id.item_iv_avatar);
         rootView = itemView.findViewById(R.id.rootView);
     }
 
@@ -48,5 +51,13 @@ public class ItemAnimalViewHolder extends RecyclerView.ViewHolder {
 
     public TextView getDescriptionTv() {
         return descriptionTv;
+    }
+
+    public ImageView getAvatarIv() {
+        return avatarIv;
+    }
+
+    public void setAvatarIv(ImageView avatarIv) {
+        this.avatarIv = avatarIv;
     }
 }

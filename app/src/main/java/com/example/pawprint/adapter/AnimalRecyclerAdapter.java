@@ -1,5 +1,6 @@
 package com.example.pawprint.adapter;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +35,12 @@ public class AnimalRecyclerAdapter extends RecyclerView.Adapter<ItemAnimalViewHo
     public void onBindViewHolder(@NonNull ItemAnimalViewHolder holder, int position) {
         Animal animal = animalList.get(position);
 
+        // 设置文本
         holder.getNameTv().setText(animal.getName());
         holder.getDescriptionTv().setText(animal.getDescription());
+
+        // 设置头像
+        holder.getAvatarIv().setImageResource(R.drawable.cat);
 
         // 设置监听器
         ItemAnimalOnClickListener onClickListener = new ItemAnimalOnClickListener();
