@@ -1,5 +1,6 @@
 package com.example.pawprint.adapter;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,7 +60,6 @@ public class AnimalRecyclerAdapter extends RecyclerView.Adapter<ItemAnimalViewHo
                     .error(R.drawable.baseline_photo_240)
                     .into(holder.getAvatarIv());
         }
-//        holder.getAvatarIv().setImageResource(R.drawable.cat);
 
         // 设置监听器
         ItemAnimalOnClickListener onClickListener = new ItemAnimalOnClickListener();
@@ -72,7 +72,9 @@ public class AnimalRecyclerAdapter extends RecyclerView.Adapter<ItemAnimalViewHo
         return animalList.size();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setAnimalList(List<Animal> animalList) {
         this.animalList = animalList;
+        notifyDataSetChanged();
     }
 }
