@@ -242,7 +242,7 @@
                 <TextView
                     android:layout_width="120dp"
                     android:layout_height="match_parent"
-                    android:text="@string/description" />
+                    android:text="@string/animal_description" />
 
                 <TextView
                     android:id="@+id/tv_description"
