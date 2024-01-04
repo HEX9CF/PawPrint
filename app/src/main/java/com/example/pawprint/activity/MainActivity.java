@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Adapter;
 import android.widget.Button;
@@ -38,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     private List<Animal> animalList = new ArrayList<>();
     private Retrofit retrofit;
     private Button btnAdd;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         // 设置适配器
         animalRecyclerAdapter = new AnimalRecyclerAdapter();
         recyclerView.setAdapter(animalRecyclerAdapter);
+        animalRecyclerAdapter.setAnimalList(animalList);
 
         // 请求列表
         requestList();
